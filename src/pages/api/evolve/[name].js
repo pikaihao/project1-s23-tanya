@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             // 1. no evo
             if (responseAsJson2.chain.species.name == req.query.name &&
                 (responseAsJson2.chain.evolves_to).length == 0) {
-                return res.json({"evolution":"None"})
+                return res.json({"evolution":req.query.name})
             }
 
             // 2. lowest stage
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
             // 3. 2nd stage
             if (responseAsJson2.chain.evolves_to[0].species.name == req.query.name) {
                 if (responseAsJson2.chain.evolves_to[0].evolves_to.length == 0) {
-                    return res.json({"evolution":"None"})
+                    return res.json({"evolution":req.query.name})
                 } else {
                     return res.json({"evolution":responseAsJson2.chain.evolves_to[0].evolves_to[0].species.name})
                 }
@@ -47,7 +47,7 @@ export default async function handler(req, res) {
 
             // 4. last stage
             if (responseAsJson2.chain.evolves_to[0].evolves_to[0].species.name == req.query.name) {
-                return res.json({"evolution":"None"})
+                return res.json({"evolution":req.query.name})
             }
 
             i++
