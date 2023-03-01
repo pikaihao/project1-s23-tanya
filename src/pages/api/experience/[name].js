@@ -1,14 +1,3 @@
-import axios from 'axios'
-import useSWR from 'swr'
-import Link from 'next/link'
-
-const fetcher = async (url) => {
-    const res = await axios.get(url)
-    return res.data
-}
-
-//const axios = require('axios');
-
 export default async function handler(req, res) {
     // returns name, sprite, and type
     // assuming every request is GET buuuuut
